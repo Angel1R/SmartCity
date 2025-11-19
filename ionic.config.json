@@ -1,0 +1,7 @@
+{
+  "name": "ProyectoSmart",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
