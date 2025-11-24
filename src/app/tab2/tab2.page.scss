@@ -1,0 +1,152 @@
+/* FONDO GENERAL */
+.main-bg { --background: #f8f9fd; }
+
+/* 1. ENCABEZADO CURVO */
+.header-curve {
+  background: 
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.98) 100%),
+    url('https://www.transparenttextures.com/patterns/circuit-board.png');
+  padding: 60px 25px 100px 25px; /* Espacio extra para que el mapa flote encima */
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+.header-top { display: flex; justify-content: space-between; align-items: center; }
+.titles {
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 800; color: white; }
+  .subtitle { font-size: 0.9rem; color: #94a3b8; margin-bottom: 4px; font-weight: 500; }
+}
+.filter-btn {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  ion-icon { color: white; font-size: 20px; }
+}
+
+/* 2. MAPA FLOTANTE */
+.digital-map-container {
+  position: relative;
+  width: auto;
+  margin: -70px 20px 20px 20px; /* Margen negativo para flotar sobre el header */
+  height: 300px;
+  background-color: #ffffff;
+  background-image: 
+      linear-gradient(#eef2f6 1px, transparent 1px),
+      linear-gradient(90deg, #eef2f6 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: 25px; /* Bordes totalmente redondeados */
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08); /* Sombra suave */
+  z-index: 10;
+}
+
+/* Elementos del Mapa */
+.street-horizontal {
+  position: absolute; top: 45%; left: 0; width: 100%; height: 25px;
+  background: #f1f5f9; border-top: 2px solid #e2e8f0; border-bottom: 2px solid #e2e8f0;
+}
+.street-vertical {
+  position: absolute; left: 45%; top: 0; height: 100%; width: 25px;
+  background: #f1f5f9; border-left: 2px solid #e2e8f0; border-right: 2px solid #e2e8f0;
+}
+.map-pin {
+  position: absolute; width: 22px; height: 22px; border-radius: 50%;
+  background: white; border: 3px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 20;
+  transform: translate(-50%, -50%); transition: transform 0.2s; cursor: pointer;
+  
+  &.active { background: #2dd36f; }
+  &.warning { background: #eb445a; }
+  &.inactive { background: #94a3b8; border-color: #e2e8f0; }
+  &:active { transform: translate(-50%, -50%) scale(0.9); }
+}
+.pulse {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 100%; height: 100%; border-radius: 50%; background: inherit;
+  opacity: 0.6; animation: pulse 2s infinite; z-index: -1;
+}
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+/* Info Bubble */
+.info-bubble {
+  position: absolute; top: -70px; left: 50%; transform: translateX(-50%);
+  background: white; padding: 8px 12px; border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15); width: 100px; text-align: center; z-index: 100;
+  &::after {
+    content: ''; position: absolute; bottom: -6px; left: 50%; margin-left: -6px;
+    border-width: 6px 6px 0; border-style: solid; border-color: white transparent transparent transparent;
+  }
+  strong { display: block; font-size: 0.75rem; color: #0f172a; }
+  span { display: block; font-size: 0.7rem; color: #64748b; }
+  .status-text { font-weight: 800; margin-top: 2px; }
+  .status-text.active { color: #2dd36f; } .status-text.warning { color: #eb445a; }
+}
+
+/* Label flotante dentro del mapa */
+.map-label {
+  position: absolute; bottom: 15px; right: 15px;
+  background: white; padding: 6px 12px; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 700; color: #2dd36f;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 5px;
+}
+
+/* 3. RESUMEN ESTADÍSTICO */
+.zone-summary {
+  display: flex; justify-content: space-around; align-items: center;
+  background: white; margin: 0 20px 25px; padding: 15px; border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.summary-card {
+  display: flex; flex-direction: column; align-items: center;
+  .label { font-size: 0.75rem; color: #94a3b8; font-weight: 600; margin-bottom: 4px; }
+  .value { font-size: 1.1rem; font-weight: 800; color: #0f172a; }
+  small { font-size: 0.75rem; font-weight: 600; color: #64748b; }
+}
+.summary-divider { width: 1px; height: 30px; background: #f1f5f9; }
+
+/* 4. LISTA */
+.section-header {
+  padding: 0 25px 10px; display: flex; justify-content: space-between; align-items: center;
+  h3 { margin: 0; font-size: 1.1rem; font-weight: 800; color: #0f172a; }
+  .see-all { color: #3b82f6; font-size: 0.9rem; font-weight: 600; }
+}
+
+.lamp-list {
+  background: transparent; padding: 0 20px 40px;
+  ion-item {
+    --background: white; margin-bottom: 12px; border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02); --padding-start: 15px; --inner-padding-end: 10px;
+    transition: transform 0.1s;
+    &:active { transform: scale(0.98); }
+  }
+  h2 { font-weight: 700; font-size: 0.95rem; color: #1e293b; margin-bottom: 3px; }
+  h2.text-off { color: #94a3b8; }
+  p { font-size: 0.8rem; color: #94a3b8; }
+}
+
+.lamp-icon-box {
+  width: 40px; height: 40px; background: #eff6ff; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; margin-right: 15px;
+  ion-icon { color: #3b82f6; font-size: 20px; }
+  &.warning { background: #fff7ed; ion-icon { color: #f59e0b; } }
+  &.off { background: #f1f5f9; ion-icon { color: #cbd5e1; } }
+}
+
+.status-section {
+  display: flex; flex-direction: column; align-items: flex-end;
+  .consumption { font-size: 0.75rem; font-weight: 600; color: #2dd36f; margin-bottom: 2px; }
+  .consumption.high { color: #ef4444; }
+  .consumption.off { color: #cbd5e1; }
+}
+
+/* ANIMACIONES ENTRADA */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-element { animation: fadeInUp 0.6s ease-out forwards; }
+.slide-up-1 { animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; }
+.slide-up-2 { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+.slide-up-3 { animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0; }

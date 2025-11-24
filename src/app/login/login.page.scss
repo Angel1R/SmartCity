@@ -1,0 +1,141 @@
+/* === FONDO GENERAL TECH === */
+.login-bg {
+  --background: #0f172a; /* Azul muy oscuro */
+  /* Fondo con degradado y textura sutil */
+  --background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%),
+                url('https://www.transparenttextures.com/patterns/circuit-board.png');
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 30px;
+}
+
+/* === 1. LOGO Y MARCA === */
+.brand-header {
+  text-align: center;
+  margin-bottom: 40px;
+  
+  .logo-circle {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #2b59c3 0%, #3b82f6 100%);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); /* Resplandor azul */
+    
+    ion-icon { font-size: 40px; color: white; }
+  }
+
+  h1 {
+    color: white;
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
+/* === 2. FORMULARIO DE CRISTAL (GLASSMORPHISM) === */
+.glass-form {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05); /* Transparente */
+  backdrop-filter: blur(10px); /* Efecto borroso */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Inputs Personalizados */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  transition: border-color 0.3s;
+
+  /* Efecto al escribir */
+  &:focus-within {
+    border-color: #3b82f6; /* Borde azul */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  }
+
+  .input-icon {
+    color: #64748b;
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  ion-item.custom-input {
+    --background: transparent;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    width: 100%;
+    
+    ion-label { color: #64748b !important; font-weight: 500; }
+    ion-input { color: white !important; font-weight: 600; --padding-bottom: 5px; }
+  }
+  
+  .eye-btn { --color: #64748b; margin: 0; }
+}
+
+.forgot-pass {
+  text-align: right;
+  margin-bottom: 25px;
+  a {
+    color: #94a3b8; font-size: 0.8rem; text-decoration: none;
+    transition: color 0.2s;
+    &:hover { color: #3b82f6; }
+  }
+}
+
+/* Botón Principal */
+.login-btn {
+  --background: linear-gradient(90deg, #2b59c3 0%, #4f46e5 100%);
+  --border-radius: 16px;
+  --box-shadow: 0 10px 20px rgba(43, 89, 195, 0.3);
+  font-weight: 700; letter-spacing: 1px; height: 50px; font-size: 1rem;
+}
+
+/* === 3. FOOTER === */
+.footer-text {
+  margin-top: 40px; text-align: center;
+  p { color: #64748b; font-size: 0.8rem; margin-bottom: 5px; }
+  span { color: #475569; font-size: 0.7rem; font-family: monospace; }
+}
+
+/* === ANIMACIONES DE ENTRADA === */
+
+/* Caída suave del logo */
+.slide-down { animation: slideDown 0.8s ease-out forwards; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Subida suave del formulario */
+.slide-up { animation: slideUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+.slide-up-delay { animation: slideUp 0.8s ease-out 0.5s forwards; opacity: 0; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

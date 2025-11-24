@@ -1,0 +1,55 @@
+/* Reutilizamos el estilo High-End del Login */
+.login-bg {
+  --background: #0f172a;
+  --background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%),
+                url('https://www.transparenttextures.com/patterns/circuit-board.png');
+}
+
+.login-container {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%; padding: 30px;
+}
+
+.brand-header {
+  text-align: center; margin-bottom: 30px;
+  h1 { color: white; font-weight: 800; font-size: 1.8rem; margin: 0; letter-spacing: 1px; }
+  p { color: #94a3b8; font-size: 0.9rem; margin-top: 5px; text-transform: uppercase; font-weight: 600; }
+}
+
+.glass-form {
+  width: 100%; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.input-group {
+  position: relative; margin-bottom: 15px; background: rgba(15, 23, 42, 0.6);
+  border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex; align-items: center; padding-left: 15px; transition: border-color 0.3s;
+  &:focus-within { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+  .input-icon { color: #64748b; font-size: 20px; margin-right: 5px; }
+  ion-item.custom-input {
+    --background: transparent; width: 100%; --padding-start: 0; --inner-padding-end: 0;
+    ion-label { color: #64748b !important; font-weight: 500; }
+    ion-input { color: white !important; font-weight: 600; --padding-bottom: 5px; }
+  }
+  .eye-btn { --color: #64748b; margin: 0; }
+}
+
+.login-btn {
+  --background: linear-gradient(90deg, #2b59c3 0%, #4f46e5 100%);
+  --border-radius: 16px; font-weight: 700; letter-spacing: 1px; height: 50px;
+}
+
+.footer-text {
+  text-align: center;
+  p { color: #64748b; margin-bottom: 0; font-size: 0.9rem; }
+  ion-button { --color: #3b82f6; font-weight: 700; text-transform: none; font-size: 1rem; }
+}
+
+/* Animaciones */
+.slide-down { animation: slideDown 0.8s ease-out forwards; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+.slide-up { animation: slideUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+.slide-up-delay { animation: slideUp 0.8s ease-out 0.5s forwards; opacity: 0; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }

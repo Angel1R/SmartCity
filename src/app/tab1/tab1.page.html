@@ -1,17 +1,89 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="main-bg">
+  
+  <div class="header-curve">
+    <div class="header-top">
+      <div class="titles fade-in-element">
+        <span class="subtitle">Bienvenido, Oswaldo</span>
+        <h1>SmartCity Secure</h1>
+      </div>
+      <div class="user-avatar fade-in-element">
+        <img src="https://i.pravatar.cc/150?img=11" alt="Perfil">
+      </div>
+    </div>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="hero-card slide-up-1">
+    <div class="hero-header">
+      <span class="hero-label">Consumo Total (Tiempo Real)</span>
+      <ion-icon name="stats-chart" class="pulse-icon"></ion-icon>
+    </div>
+    <div class="hero-value">
+      {{displayConsumo}} <span class="unit">kWh</span>
+    </div>
+    <div class="hero-footer">
+      <div class="badge success">
+        <ion-icon name="trending-down"></ion-icon> 5% Ahorro
+      </div>
+      <span class="date">Actualizado: Ahora mismo</span>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="stats-grid slide-up-2">
+    
+    <div class="stat-box ripple-effect">
+      <div class="icon-circle blue"><ion-icon name="bulb"></ion-icon></div>
+      <span class="stat-label">Activas</span>
+      <span class="stat-num">{{displayActivas}}</span>
+    </div>
+
+    <div class="stat-box ripple-effect">
+      <div class="icon-circle orange"><ion-icon name="thermometer"></ion-icon></div>
+      <span class="stat-label">Temp. Prom</span>
+      <span class="stat-num">{{displayTemp}}°C</span>
+    </div>
+
+    <div class="stat-box ripple-effect">
+      <div class="icon-circle purple"><ion-icon name="speedometer"></ion-icon></div>
+      <span class="stat-label">Voltaje</span>
+      <span class="stat-num">{{displayVoltaje}}V</span>
+    </div>
+
+    <div class="stat-box warning ripple-effect">
+      <div class="icon-circle red"><ion-icon name="alert-circle"></ion-icon></div>
+      <span class="stat-label">Fallas</span>
+      <span class="stat-num text-red">{{displayFallas}}</span>
+    </div>
+    
+  </div>
+
+  <div class="section-header slide-up-3">
+    <h3>Alertas Recientes</h3>
+    <span class="see-all">Ver todas</span>
+  </div>
+
+  <div class="modern-list slide-up-3">
+    
+    <div class="list-item">
+      <div class="item-icon red-bg">
+        <ion-icon name="flash-off"></ion-icon>
+      </div>
+      <div class="item-content">
+        <h4>Falla de Corriente</h4>
+        <p>Zona Sur • Lámpara 105</p>
+      </div>
+      <span class="item-time">10m</span>
+    </div>
+
+    <div class="list-item">
+      <div class="item-icon blue-bg">
+        <ion-icon name="eye"></ion-icon>
+      </div>
+      <div class="item-content">
+        <h4>Movimiento Detectado</h4>
+        <p>Zona Norte • Lámpara 101</p>
+      </div>
+      <span class="item-time">1h</span>
+    </div>
+  </div>
+
 </ion-content>

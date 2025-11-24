@@ -1,1 +1,83 @@
+/* BARRA FLOTANTE */
+ion-tab-bar {
+  --background: #ffffff;
+  --border: 0;
+  height: 80px; 
+  padding-bottom: 15px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+  position: absolute; bottom: 0; width: 100%;
+}
 
+ion-tab-button {
+  --background: transparent;
+  --color: #94a3b8; 
+  
+  ion-icon {
+    font-size: 26px;
+    margin-bottom: 6px;
+    transition: all 0.3s ease;
+  }
+
+  ion-label {
+    font-weight: 600;
+    font-size: 11px;
+    transition: color 0.3s ease;
+  }
+}
+
+/* --- ANIMACIONES CUANDO SELECCIONAS UNA PESTAÑA --- */
+
+/* 1. MONITOR (RAYO) */
+ion-tab-button[tab="tab1"][aria-selected="true"] {
+  ion-icon {
+    color: #f59e0b; 
+    animation: electricShock 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.6));
+  }
+  ion-label { color: #f59e0b; }
+}
+
+@keyframes electricShock {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  10%, 30%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+  20%, 40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+}
+
+/* 2. ZONAS (MAPA) */
+ion-tab-button[tab="tab2"][aria-selected="true"] {
+  ion-icon {
+    color: #3b82f6; 
+    animation: mapBounce 1s infinite;
+    filter: drop-shadow(0 4px 4px rgba(59, 130, 246, 0.3));
+  }
+  ion-label { color: #3b82f6; }
+}
+
+@keyframes mapBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* 3. ALERTAS (CAMPANA) */
+ion-tab-button[tab="tab3"][aria-selected="true"] {
+  ion-icon {
+    color: #ef4444; 
+    animation: alarmShake 1.2s infinite cubic-bezier(.36,.07,.19,.97);
+    filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.5));
+  }
+  ion-label { color: #ef4444; }
+}
+
+@keyframes alarmShake {
+  0% { transform: rotate(0); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-15deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(5deg); }
+  90% { transform: rotate(-5deg); }
+  100% { transform: rotate(0); }
+}

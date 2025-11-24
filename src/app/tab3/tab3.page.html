@@ -1,17 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="main-bg">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="header-curve">
+    <div class="header-top">
+      <div class="titles fade-in-element">
+        <span class="subtitle">Reporte de Estado</span>
+        <h1>Alertas del Sistema</h1>
+      </div>
+      <div class="icon-box fade-in-element">
+        <ion-icon name="notifications" class="ringing-bell"></ion-icon>
+        <div class="notification-dot"></div>
+      </div>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="health-container slide-up-1">
+    <div class="circular-progress">
+      <svg viewBox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+        <path class="circle" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+      </svg>
+      <div class="percentage">
+        <span class="number">{{healthScore}}%</span>
+        <span class="label">Operativo</span>
+      </div>
+    </div>
+    <p class="status-msg">El sistema funciona correctamente con 2 excepciones leves detectadas hoy.</p>
+  </div>
+
+  <div class="section-header slide-up-2">
+    <h3>Atención Requerida</h3>
+    <span class="badge-count">3</span>
+  </div>
+
+  <div class="alert-list slide-up-3">
+    <div *ngFor="let alert of alerts" class="alert-card {{alert.type}} ripple-effect">
+      <div class="alert-icon">
+        <ion-icon [name]="alert.icon"></ion-icon>
+      </div>
+      <div class="alert-content">
+        <div class="alert-top">
+          <h4>{{alert.title}}</h4>
+          <span class="time">{{alert.time}}</span>
+        </div>
+        <p>{{alert.desc}}</p>
+        <div class="action-link">
+          <span>Ver detalles</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-action slide-up-3">
+    <ion-button expand="block" class="download-btn" (click)="downloadPDF()">
+      <ion-icon slot="start" name="document-text"></ion-icon>
+      Descargar Reporte PDF
+    </ion-button>
+  </div>
+
 </ion-content>

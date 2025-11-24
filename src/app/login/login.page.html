@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true" class="login-bg">
+  
+  <div class="login-container">
+    
+    <div class="brand-header slide-down">
+      <div class="logo-circle">
+        <ion-icon name="flash" class="logo-icon"></ion-icon>
+      </div>
+      <h1>SmartCity</h1>
+      <p>Secure System Access</p>
+    </div>
+
+    <div class="glass-form slide-up">
+      
+      <div class="input-group">
+        <ion-icon name="person" class="input-icon"></ion-icon>
+        <ion-item lines="none" class="custom-input">
+          <ion-label position="floating">Correo electrónico</ion-label>
+          
+          <ion-input type="email" [(ngModel)]="credentials.correo"></ion-input>
+          
+        </ion-item>
+      </div>
+
+      <div class="input-group">
+        <ion-icon name="lock-closed" class="input-icon"></ion-icon>
+        <ion-item lines="none" class="custom-input">
+          <ion-label position="floating">Contraseña</ion-label>
+          
+          <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="credentials.contrasena"></ion-input>
+          
+          <ion-button slot="end" fill="clear" class="eye-btn" (click)="togglePassword()">
+            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </div>
+
+      <div class="forgot-pass">
+        <a>¿Olvidaste tu acceso?</a>
+      </div>
+
+      <ion-button expand="block" class="login-btn" (click)="login()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">INGRESAR</span>
+        <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+      </ion-button>
+
+    </div>
+
+    <div class="footer-text slide-up-delay">
+      <p>Desarrollado por Equipo SmartCity</p>
+      <span>v1.0.4 Secure Build</span>
+    </div>
+
+  </div>
+
+</ion-content>

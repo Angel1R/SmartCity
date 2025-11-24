@@ -1,18 +1,32 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+
+// 1. IMPORTAMOS LOS ICONOS
 import { addIcons } from 'ionicons';
-import { triangle, ellipse, square } from 'ionicons/icons';
+import { 
+  flash, 
+  map, 
+  alertCircle 
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss'],
-  imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
+  standalone: true,
+  imports: [IonicModule, CommonModule]
 })
 export class TabsPage {
-  public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {
-    addIcons({ triangle, ellipse, square });
+    // 2. REGISTRO EXACTO (Solución de errores)
+    // 'alert-circle' entre comillas conecta con name="alert-circle" en el HTML
+    addIcons({ 
+      flash, 
+      map, 
+      'alert-circle': alertCircle 
+    });
   }
+
 }
