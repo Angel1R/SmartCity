@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login', // <-- CAMBIO CLAVE: Redirige al login al iniciar
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -11,7 +11,11 @@ export const routes: Routes = [
     loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
   {
-    path: 'tabs', // Esta es la ruta a la que irás DESPUÉS de loguearte
+    path: 'register',
+    loadComponent: () => import('./register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
 ];

@@ -2,46 +2,41 @@
   
   <div class="login-container">
     
-    <!-- Header con animación -->
     <div class="brand-header slide-down">
       <h1>Crear Cuenta</h1>
       <p>Únete a SmartCity Secure</p>
     </div>
 
-    <!-- Formulario Glassmorphism -->
     <div class="glass-form slide-up">
       
-      <!-- Nombre -->
       <div class="input-group">
         <ion-icon name="person" class="input-icon"></ion-icon>
         <ion-item lines="none" class="custom-input">
           <ion-label position="floating">Nombre Completo</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" [(ngModel)]="userData.nombre"></ion-input>
         </ion-item>
       </div>
 
-      <!-- Correo -->
       <div class="input-group">
         <ion-icon name="mail" class="input-icon"></ion-icon>
         <ion-item lines="none" class="custom-input">
           <ion-label position="floating">Correo Institucional</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-input type="email" [(ngModel)]="userData.correo"></ion-input>
         </ion-item>
       </div>
 
-      <!-- Contraseña -->
       <div class="input-group">
         <ion-icon name="lock-closed" class="input-icon"></ion-icon>
         <ion-item lines="none" class="custom-input">
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input [type]="showPassword ? 'text' : 'password'"></ion-input>
+          <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="userData.contrasena"></ion-input>
+          
           <ion-button slot="end" fill="clear" class="eye-btn" (click)="togglePassword()">
             <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
           </ion-button>
         </ion-item>
       </div>
 
-      <!-- Botón Registrar -->
       <ion-button expand="block" class="login-btn" (click)="register()" [disabled]="isLoading" style="margin-top: 20px;">
         <span *ngIf="!isLoading">REGISTRARSE</span>
         <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
@@ -49,7 +44,6 @@
 
     </div>
 
-    <!-- Footer: Volver al Login -->
     <div class="footer-text slide-up-delay" style="margin-top: 30px;">
       <p>¿Ya tienes cuenta?</p>
       <ion-button fill="clear" size="small" color="light" (click)="goToLogin()">

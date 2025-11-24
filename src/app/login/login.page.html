@@ -2,6 +2,7 @@
   
   <div class="login-container">
     
+    <!-- LOGO -->
     <div class="brand-header slide-down">
       <div class="logo-circle">
         <ion-icon name="flash" class="logo-icon"></ion-icon>
@@ -10,15 +11,14 @@
       <p>Secure System Access</p>
     </div>
 
+    <!-- FORMULARIO -->
     <div class="glass-form slide-up">
       
       <div class="input-group">
         <ion-icon name="person" class="input-icon"></ion-icon>
         <ion-item lines="none" class="custom-input">
-          <ion-label position="floating">Correo electrónico</ion-label>
-          
-          <ion-input type="email" [(ngModel)]="credentials.correo"></ion-input>
-          
+          <ion-label position="floating">Usuario ID</ion-label>
+          <ion-input type="text"></ion-input>
         </ion-item>
       </div>
 
@@ -26,9 +26,7 @@
         <ion-icon name="lock-closed" class="input-icon"></ion-icon>
         <ion-item lines="none" class="custom-input">
           <ion-label position="floating">Contraseña</ion-label>
-          
-          <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="credentials.contrasena"></ion-input>
-          
+          <ion-input [type]="showPassword ? 'text' : 'password'"></ion-input>
           <ion-button slot="end" fill="clear" class="eye-btn" (click)="togglePassword()">
             <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
           </ion-button>
@@ -46,9 +44,16 @@
 
     </div>
 
+    <!-- FOOTER CON BOTÓN DE REGISTRO -->
     <div class="footer-text slide-up-delay">
-      <p>Desarrollado por Equipo SmartCity</p>
-      <span>v1.0.4 Secure Build</span>
+      <p>¿No tienes cuenta?</p>
+      <ion-button fill="clear" size="small" class="register-link-btn" (click)="goToRegister()">
+        Regístrate aquí
+      </ion-button>
+      
+      <div style="margin-top: 20px; opacity: 0.5;">
+        <span>v1.0.4 Secure Build</span>
+      </div>
     </div>
 
   </div>
