@@ -42,34 +42,41 @@ export class RegisterPage implements OnInit {
   }
 
   async register() {
-    // 1. Validar campos vacíos
     if (!this.userData.nombre || !this.userData.correo || !this.userData.contrasena) {
       this.mostrarAlerta('Error', 'Por favor completa todos los campos.');
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.userData.correo)) {
+      this.mostrarAlerta('Error', 'El correo no tiene un formato válido.');
+      return;
+    }
+
+    if (this.userData.contrasena.length < 8) {
+      this.mostrarAlerta('Error', 'La contraseña debe tener mínimo 8 caracteres.');
+      return;
+    }
+
     this.isLoading = true;
 
-    // 2. Llamada al Backend
     this.authService.register(this.userData).subscribe({
-      // AGREGAMOS ": any" AQUÍ
-      next: async (response: any) => { 
+      next: async (response: any) => {
         this.isLoading = false;
-        console.log('Usuario creado:', response);
-        
         await this.mostrarAlerta('Cuenta Creada', 'Tu registro fue exitoso. Ahora inicia sesión.');
         this.navCtrl.navigateBack('/login');
       },
-      // AGREGAMOS ": any" AQUÍ TAMBIÉN
       error: async (error: any) => {
         this.isLoading = false;
         console.error('Error en registro:', error);
-        
+
         let mensaje = 'No se pudo crear la cuenta.';
-        // Usamos el encadenamiento opcional (?.) por seguridad
-        if (error?.status === 422) mensaje = 'Datos inválidos. Revisa el formato del correo.';
-        if (error?.status === 0) mensaje = 'Error de conexión con el servidor.';
-        
+
+        if (error?.error?.detail) mensaje = error.error.detail;
+        else if (error?.status === 409) mensaje = 'Este correo ya está registrado.';
+        else if (error?.status === 422) mensaje = 'Datos inválidos. Revisa el correo o la contraseña.';
+        else if (error?.status === 0) mensaje = 'No hay conexión con el servidor.';
+
         await this.mostrarAlerta('Error', mensaje);
       }
     });
