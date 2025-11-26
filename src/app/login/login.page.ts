@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { person, lockClosed, logIn, eye, eyeOff, flash } from 'ionicons/icons';
 
@@ -14,30 +15,43 @@ import { person, lockClosed, logIn, eye, eyeOff, flash } from 'ionicons/icons';
 })
 export class LoginPage implements OnInit {
 
+  correo = '';
+  contrasena = '';
+
   showPassword = false;
   isLoading = false;
 
-  constructor(private navCtrl: NavController) {
+  constructor(
+    private router: Router,
+    private navCtrl: NavController
+  ) {
     addIcons({ person, lockClosed, logIn, eye, eyeOff, flash });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
   login() {
+    if (!this.correo || !this.contrasena) {
+      console.log('Faltan datos');
+      return;
+    }
+
     this.isLoading = true;
+
     setTimeout(() => {
       this.isLoading = false;
-      this.navCtrl.navigateRoot('/tabs/tab1', { animated: true, animationDirection: 'forward' });
-    }, 1500);
+
+      // ahora sí funciona
+      this.router.navigate(['/tabs/tab1']);
+      
+    }, 1200);
   }
 
-  // Función para ir al registro
   goToRegister() {
-    this.navCtrl.navigateForward('/register', { animated: true, animationDirection: 'forward' });
+    this.router.navigate(['/register']);
   }
-
 }
